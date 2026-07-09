@@ -1,0 +1,463 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /ALU_tb/DUT0
+=== Design Unit: work.ALU
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         7         7         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /ALU_tb/DUT0
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ALU.v
+------------------------------------CASE Branch------------------------------------
+    21                                        59     Count coming in to CASE
+    22              1                         12           	Add:            Alu_out = A + B;
+    23              1                         10           	Sub:            Alu_out = A - B;
+    24              1                         18           	Not_A:          Alu_out = ~A;
+    25              1                         18           	ReductionOR_B:  Alu_out = |B;
+    26              1                          1             default:  Alu_out = 5'b0;
+Branch totals: 5 hits of 5 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    32                                        50     Count coming in to IF
+    32              1                          4           if (reset)
+    34              1                         46           else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       9         9         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /ALU_tb/DUT0 --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ALU.v
+    1                                                module ALU (
+    2                                                    input  clk,
+    3                                                    input  reset,
+    4                                                    input  [1:0] Opcode,	// The opcode
+    5                                                    input  signed [3:0] A,	// Input data A in 2's complement
+    6                                                    input  signed [3:0] B,	// Input data B in 2's complement
+    7                                                
+    8                                                    output reg signed [4:0] C // ALU output in 2's complement
+    9                                                
+    10                                               		  );
+    11                                               
+    12                                                  reg signed [4:0] 	    Alu_out; // ALU output in 2's complement
+    13                                               
+    14                                                  localparam 		    Add	           = 2'b00; // A + B
+    15                                                  localparam 		    Sub	           = 2'b01; // A - B
+    16                                                  localparam 		    Not_A	         = 2'b10; // ~A
+    17                                                  localparam 		    ReductionOR_B  = 2'b11; // |B
+    18                                               
+    19                                                  // Do the operation
+    20              1                         59        always @* begin
+    21                                                     case (Opcode)
+    22              1                         12           	Add:            Alu_out = A + B;
+    23              1                         10           	Sub:            Alu_out = A - B;
+    24              1                         18           	Not_A:          Alu_out = ~A;
+    25              1                         18           	ReductionOR_B:  Alu_out = |B;
+    26              1                          1             default:  Alu_out = 5'b0;
+    27                                                     endcase
+    28                                                  end // always @ *
+    29                                               
+    30                                                  // Register output C
+    31              1                         50        always @(posedge clk or posedge reset) begin
+    32                                                     if (reset)
+    33              1                          4     	     C <= 5'b0;
+    34                                                     else
+    35              1                         46     	     C<= Alu_out;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         44        44         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /ALU_tb/DUT0 --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                            A[0-3]           1           1      100.00 
+                                      Alu_out[4-0]           1           1      100.00 
+                                            B[0-3]           1           1      100.00 
+                                            C[4-0]           1           1      100.00 
+                                       Opcode[0-1]           1           1      100.00 
+                                               clk           1           1      100.00 
+                                             reset           1           1      100.00 
+
+Total Node Count     =         22 
+Toggled Node Count   =         22 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (44 of 44 bins)
+
+=================================================================================
+=== Instance: /ALU_tb
+=== Design Unit: work.ALU_tb
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         9         7         2    77.77%
+
+================================Branch Details================================
+
+Branch Coverage for instance /ALU_tb
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ALU_tb.sv
+------------------------------------IF Branch------------------------------------
+    115                                       17     Count coming in to IF
+    115             1                          2         if(B_tb == 4'b0000)
+    117             1                         15         else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+------------------------------------IF Branch------------------------------------
+    127                                        5     Count coming in to IF
+    127             1                          2         if(Opcode_tb == 2'b00)
+    130             1                          1         else if(Opcode_tb == 2'b01)
+    133             1                          1         else if(Opcode_tb == 2'b10)
+    136             1                          1         else if(Opcode_tb == 2'b11)
+                                         ***0***     All False Count
+Branch totals: 4 hits of 5 branches = 80.00%
+
+------------------------------------IF Branch------------------------------------
+    152                                       60     Count coming in to IF
+    152             1                    ***0***         if ($signed(expected_result) !== C_tb) begin
+    157             1                         60         else
+Branch totals: 1 hit of 2 branches = 50.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       6         4         2    66.66%
+
+================================Condition Details================================
+
+Condition Coverage for instance /ALU_tb --
+
+  File ALU_tb.sv
+----------------Focused Condition View-------------------
+Line       115 Item    1  (B_tb == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+   Input Term   Covered  Reason for no coverage   Hint
+  -----------  --------  -----------------------  --------------
+  (B_tb == 0)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (B_tb == 0)_0         -                             
+  Row   2:          1  (B_tb == 0)_1         -                             
+
+----------------Focused Condition View-------------------
+Line       127 Item    1  (Opcode_tb == 0)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+  (Opcode_tb == 0)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (Opcode_tb == 0)_0    -                             
+  Row   2:          1  (Opcode_tb == 0)_1    -                             
+
+----------------Focused Condition View-------------------
+Line       130 Item    1  (Opcode_tb == 1)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+  (Opcode_tb == 1)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (Opcode_tb == 1)_0    -                             
+  Row   2:          1  (Opcode_tb == 1)_1    -                             
+
+----------------Focused Condition View-------------------
+Line       133 Item    1  (Opcode_tb == 2)
+Condition totals: 1 of 1 input term covered = 100.00%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+  (Opcode_tb == 2)         Y
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (Opcode_tb == 2)_0    -                             
+  Row   2:          1  (Opcode_tb == 2)_1    -                             
+
+----------------Focused Condition View-------------------
+Line       136 Item    1  (Opcode_tb == 3)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+  (Opcode_tb == 3)         N  '_0' not hit             Hit '_0'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:    ***0***  (Opcode_tb == 3)_0    -                             
+  Row   2:          1  (Opcode_tb == 3)_1    -                             
+
+----------------Focused Condition View-------------------
+Line       152 Item    1  (expected_result !== C_tb)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+                  Input Term   Covered  Reason for no coverage   Hint
+                 -----------  --------  -----------------------  --------------
+  (expected_result !== C_tb)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target                    Non-masking condition(s)      
+ ---------  ---------  --------------------          -------------------------     
+  Row   1:          1  (expected_result !== C_tb)_0  -                             
+  Row   2:    ***0***  (expected_result !== C_tb)_1  -                             
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                     100        98         2    98.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /ALU_tb --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File ALU_tb.sv
+    1                                                module ALU_tb;
+    2                                                
+    3                                                bit clk_tb, reset_tb;
+    4                                                logic [1:0] Opcode_tb;
+    5                                                logic signed [3:0] A_tb, B_tb;
+    6                                                
+    7                                                logic signed [4:0] C_tb;
+    8                                                
+    9                                                integer correct_count, error_count;
+    10                                               localparam [4:0] MAXPOS = 7, MAXNEG = -8 , ZERO = 0;
+    11                                               
+    12                                               
+    13                                               ALU DUT0(
+    14                                                   .clk(clk_tb),
+    15                                                   .reset(reset_tb),
+    16                                                   .Opcode(Opcode_tb),
+    17                                                   .A(A_tb),
+    18                                                   .B(B_tb),
+    19                                               
+    20                                                   .C(C_tb)
+    21                                               );
+    22                                               
+    23                                               initial begin
+    24              1                          1         clk_tb = 0;
+    25              1                          1         forever
+    26              1                        123             #1 clk_tb = ~clk_tb;
+    26              2                        122     
+    27                                               end
+    28                                               
+    29                                               initial begin
+    30              1                          1     correct_count = 0;
+    31              1                          1     error_count = 0;
+    32              1                          1     reset_tb = 0;
+    33              1                          1     Opcode_tb = 0;
+    34              1                          1     A_tb = 0; 
+    35              1                          1     B_tb = 0;
+    36                                               
+    37                                               //ALU_0
+    38              1                          1     assert_reset();
+    39              1                          1     @(negedge clk_tb);
+    40              1                          1     assert_reset();
+    41                                               
+    42                                               //ALU_1  
+    43              1                          1     Opcode_tb =2'b00;
+    44              1                          1     A_tb = MAXPOS; B_tb = MAXPOS;
+    44              2                          1     
+    45              1                          1     check_result(14);
+    46                                               
+    47              1                          1     A_tb = MAXPOS; B_tb = MAXNEG;
+    47              2                          1     
+    48              1                          1     check_result(-1);
+    49                                               
+    50              1                          1     A_tb = MAXPOS; B_tb = ZERO;
+    50              2                          1     
+    51              1                          1     check_result(MAXPOS);
+    52                                               
+    53              1                          1     A_tb = MAXNEG; B_tb = MAXPOS;
+    53              2                          1     
+    54              1                          1     check_result(-1);
+    55                                               
+    56              1                          1     A_tb = ZERO; B_tb = MAXPOS;
+    56              2                          1     
+    57              1                          1     check_result(MAXPOS);
+    58                                               
+    59              1                          1     A_tb = ZERO; B_tb = MAXNEG;
+    59              2                          1     
+    60              1                          1     check_result(MAXNEG);
+    61                                               
+    62              1                          1     A_tb = ZERO; B_tb = ZERO;
+    62              2                          1     
+    63              1                          1     check_result(0);
+    64                                               
+    65              1                          1     A_tb = MAXNEG; B_tb = MAXNEG;
+    65              2                          1     
+    66              1                          1     check_result(-16);
+    67                                               
+    68              1                          1     A_tb = MAXNEG; B_tb = ZERO;
+    68              2                          1     
+    69              1                          1     check_result(MAXNEG);
+    70                                               
+    71                                               //ALU_2  
+    72              1                          1     Opcode_tb =2'b01;
+    73              1                          1     A_tb = MAXPOS; B_tb = MAXPOS;
+    73              2                          1     
+    74              1                          1     check_result(ZERO);
+    75                                               
+    76              1                          1     A_tb = MAXPOS; B_tb = MAXNEG;
+    76              2                          1     
+    77              1                          1     check_result(15);
+    78                                               
+    79              1                          1     A_tb = ZERO; B_tb = MAXPOS;
+    79              2                          1     
+    80              1                          1     check_result(-7);
+    81                                               
+    82              1                          1     A_tb = ZERO; B_tb = MAXNEG;
+    82              2                          1     
+    83              1                          1     check_result(8);
+    84                                               
+    85              1                          1     A_tb = MAXNEG; B_tb = MAXPOS;
+    85              2                          1     
+    86              1                          1     check_result(-15);
+    87                                               
+    88              1                          1     A_tb = MAXPOS; B_tb = ZERO;
+    88              2                          1     
+    89              1                          1     check_result(MAXPOS);
+    90                                               
+    91              1                          1     A_tb = MAXNEG; B_tb = MAXNEG;
+    91              2                          1     
+    92              1                          1     check_result(ZERO);
+    93                                               
+    94              1                          1     A_tb = ZERO; B_tb = ZERO;
+    94              2                          1     
+    95              1                          1     check_result(0);
+    96                                               
+    97              1                          1     A_tb = MAXNEG; B_tb = ZERO;
+    97              2                          1     
+    98              1                          1     check_result(MAXNEG);
+    99                                               
+    100                                              
+    101                                              //ALU_3  
+    102             1                          1     Opcode_tb =2'b10;
+    103             1                          1     A_tb = 4'b0000;
+    104                                              
+    105             1                         17     repeat (17) begin
+    106             1                         17         check_result($signed(~A_tb));
+    107             1                         17         A_tb++;
+    108                                              end
+    109                                              
+    110                                              //ALU_4
+    111             1                          1     Opcode_tb =2'b11;
+    112             1                          1     B_tb = 4'b0000;
+    113                                              
+    114             1                         17     repeat (17) begin
+    115                                                  if(B_tb == 4'b0000)
+    116             1                          2             check_result(0);
+    117                                                  else
+    118             1                         15             check_result(1);    
+    119             1                         17         B_tb++; 
+    120                                              end
+    121                                              
+    122                                              //ALU_5
+    123             1                          1     A_tb = 4'b0111; B_tb = 4'b1110;
+    123             2                          1     
+    124             1                          1     Opcode_tb = 2'b00;
+    125                                              
+    126             1                          5     repeat (5) begin
+    127                                                  if(Opcode_tb == 2'b00)
+    128             1                          2             check_result(A_tb + B_tb);
+    129                                              
+    130                                                  else if(Opcode_tb == 2'b01)
+    131             1                          1             check_result(A_tb - B_tb);  
+    132                                              
+    133                                                  else if(Opcode_tb == 2'b10)
+    134             1                          1             check_result(5'b11000);
+    135                                              
+    136                                                  else if(Opcode_tb == 2'b11)
+    137             1                          1             check_result(1);       
+    138             1                          5         Opcode_tb++; 
+    139                                              end
+    140                                              
+    141             1                          1     Opcode_tb = 2'bxx;
+    142             1                          1     check_result(0);
+    143                                              
+    144             1                          1     $display("%t: At end of test error count is %0d and correct count = %0d",
+    145                                                           $time, error_count, correct_count);
+    146             1                          1         $stop;
+    147                                              end
+    148                                              
+    149                                              
+    150                                              task check_result (input signed [4:0] expected_result);
+    151             1                         60         @(negedge clk_tb);
+    152                                                  if ($signed(expected_result) !== C_tb) begin
+    153             1                    ***0***             error_count = error_count + 1;
+    154             1                    ***0***             $display("%t: Error: For A_tb = %0d | B_tb = %0d | Opcode_tb = %0d | C_tb should equal %0d but is %0d",
+    155                                                               $time, A_tb, B_tb,Opcode_tb,expected_result, C_tb);
+    156                                                  end
+    157                                                  else
+    158             1                         60             correct_count = correct_count + 1;
+    159                                              endtask
+    160                                              
+    161                                              
+    162                                              task assert_reset;
+    163             1                          2         reset_tb = 1;
+    164             1                          2         check_result(0);
+    165             1                          2         reset_tb = 0;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        162        45       117    27.77%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /ALU_tb --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                         A_tb[0-3]           1           1      100.00 
+                                         B_tb[0-3]           1           1      100.00 
+                                         C_tb[0-4]           1           1      100.00 
+                                    Opcode_tb[0-1]           1           1      100.00 
+                                            clk_tb           1           1      100.00 
+                                correct_count[0-4]           1           1      100.00 
+                                  correct_count[5]           0           1       50.00 
+                               correct_count[6-31]           0           0        0.00 
+                                 error_count[0-31]           0           0        0.00 
+                                          reset_tb           1           1      100.00 
+
+Total Node Count     =         81 
+Toggled Node Count   =         22 
+Untoggled Node Count =         59 
+
+Toggle Coverage      =      27.77% (45 of 162 bins)
+
+
+Total Coverage By Instance (filtered view): 73.88%
+

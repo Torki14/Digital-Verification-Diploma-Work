@@ -1,0 +1,224 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /counter_pkg
+=== Design Unit: work.counter_pkg
+=================================================================================
+
+Covergroup Coverage:
+    Covergroups                      1        na        na     0.00%
+        Coverpoints/Crosses          5        na        na        na
+            Covergroup Bins         50         0        50     0.00%
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /counter_pkg/counter_class/cover_counter          0.00%        100          -    ZERO                 
+    covered/total bins:                                     0         50          -                      
+    missing/total bins:                                    50         50          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint cp1                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+    Coverpoint cp2                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+    Coverpoint cp3                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+    Coverpoint cp4                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+    Coverpoint cp5                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+ Covergroup instance \/counter_pkg::counter_class::cover_counter  
+                                                        0.00%        100          -    ZERO                 
+    covered/total bins:                                     0         50          -                      
+    missing/total bins:                                    50         50          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint cp1                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin auto[0]                                         0          1          -    ZERO                 
+        bin auto[1]                                         0          1          -    ZERO                 
+        bin auto[2]                                         0          1          -    ZERO                 
+        bin auto[3]                                         0          1          -    ZERO                 
+        bin auto[4]                                         0          1          -    ZERO                 
+        bin auto[5]                                         0          1          -    ZERO                 
+        bin auto[6]                                         0          1          -    ZERO                 
+        bin auto[7]                                         0          1          -    ZERO                 
+        bin auto[8]                                         0          1          -    ZERO                 
+        bin auto[9]                                         0          1          -    ZERO                 
+        bin auto[10]                                        0          1          -    ZERO                 
+        bin auto[11]                                        0          1          -    ZERO                 
+        bin auto[12]                                        0          1          -    ZERO                 
+        bin auto[13]                                        0          1          -    ZERO                 
+        bin auto[14]                                        0          1          -    ZERO                 
+        bin auto[15]                                        0          1          -    ZERO                 
+    Coverpoint cp2                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin count_out_bins_up[0]                            0          1          -    ZERO                 
+        bin count_out_bins_up[1]                            0          1          -    ZERO                 
+        bin count_out_bins_up[2]                            0          1          -    ZERO                 
+        bin count_out_bins_up[3]                            0          1          -    ZERO                 
+        bin count_out_bins_up[4]                            0          1          -    ZERO                 
+        bin count_out_bins_up[5]                            0          1          -    ZERO                 
+        bin count_out_bins_up[6]                            0          1          -    ZERO                 
+        bin count_out_bins_up[7]                            0          1          -    ZERO                 
+        bin count_out_bins_up[8]                            0          1          -    ZERO                 
+        bin count_out_bins_up[9]                            0          1          -    ZERO                 
+        bin count_out_bins_up[10]                           0          1          -    ZERO                 
+        bin count_out_bins_up[11]                           0          1          -    ZERO                 
+        bin count_out_bins_up[12]                           0          1          -    ZERO                 
+        bin count_out_bins_up[13]                           0          1          -    ZERO                 
+        bin count_out_bins_up[14]                           0          1          -    ZERO                 
+        bin count_out_bins_up[15]                           0          1          -    ZERO                 
+    Coverpoint cp3                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin overflow_bin                                    0          1          -    ZERO                 
+    Coverpoint cp4                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin count_out_bins_down[0]                          0          1          -    ZERO                 
+        bin count_out_bins_down[1]                          0          1          -    ZERO                 
+        bin count_out_bins_down[2]                          0          1          -    ZERO                 
+        bin count_out_bins_down[3]                          0          1          -    ZERO                 
+        bin count_out_bins_down[4]                          0          1          -    ZERO                 
+        bin count_out_bins_down[5]                          0          1          -    ZERO                 
+        bin count_out_bins_down[6]                          0          1          -    ZERO                 
+        bin count_out_bins_down[7]                          0          1          -    ZERO                 
+        bin count_out_bins_down[8]                          0          1          -    ZERO                 
+        bin count_out_bins_down[9]                          0          1          -    ZERO                 
+        bin count_out_bins_down[10]                         0          1          -    ZERO                 
+        bin count_out_bins_down[11]                         0          1          -    ZERO                 
+        bin count_out_bins_down[12]                         0          1          -    ZERO                 
+        bin count_out_bins_down[13]                         0          1          -    ZERO                 
+        bin count_out_bins_down[14]                         0          1          -    ZERO                 
+        bin count_out_bins_down[15]                         0          1          -    ZERO                 
+    Coverpoint cp5                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin underflow_bin                                   0          1          -    ZERO                 
+
+COVERGROUP COVERAGE:
+----------------------------------------------------------------------------------------------------------
+Covergroup                                             Metric       Goal       Bins    Status               
+                                                                                                         
+----------------------------------------------------------------------------------------------------------
+ TYPE /counter_pkg/counter_class/cover_counter          0.00%        100          -    ZERO                 
+    covered/total bins:                                     0         50          -                      
+    missing/total bins:                                    50         50          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint cp1                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+    Coverpoint cp2                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+    Coverpoint cp3                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+    Coverpoint cp4                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+    Coverpoint cp5                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+ Covergroup instance \/counter_pkg::counter_class::cover_counter  
+                                                        0.00%        100          -    ZERO                 
+    covered/total bins:                                     0         50          -                      
+    missing/total bins:                                    50         50          -                      
+    % Hit:                                              0.00%        100          -                      
+    Coverpoint cp1                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin auto[0]                                         0          1          -    ZERO                 
+        bin auto[1]                                         0          1          -    ZERO                 
+        bin auto[2]                                         0          1          -    ZERO                 
+        bin auto[3]                                         0          1          -    ZERO                 
+        bin auto[4]                                         0          1          -    ZERO                 
+        bin auto[5]                                         0          1          -    ZERO                 
+        bin auto[6]                                         0          1          -    ZERO                 
+        bin auto[7]                                         0          1          -    ZERO                 
+        bin auto[8]                                         0          1          -    ZERO                 
+        bin auto[9]                                         0          1          -    ZERO                 
+        bin auto[10]                                        0          1          -    ZERO                 
+        bin auto[11]                                        0          1          -    ZERO                 
+        bin auto[12]                                        0          1          -    ZERO                 
+        bin auto[13]                                        0          1          -    ZERO                 
+        bin auto[14]                                        0          1          -    ZERO                 
+        bin auto[15]                                        0          1          -    ZERO                 
+    Coverpoint cp2                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin count_out_bins_up[0]                            0          1          -    ZERO                 
+        bin count_out_bins_up[1]                            0          1          -    ZERO                 
+        bin count_out_bins_up[2]                            0          1          -    ZERO                 
+        bin count_out_bins_up[3]                            0          1          -    ZERO                 
+        bin count_out_bins_up[4]                            0          1          -    ZERO                 
+        bin count_out_bins_up[5]                            0          1          -    ZERO                 
+        bin count_out_bins_up[6]                            0          1          -    ZERO                 
+        bin count_out_bins_up[7]                            0          1          -    ZERO                 
+        bin count_out_bins_up[8]                            0          1          -    ZERO                 
+        bin count_out_bins_up[9]                            0          1          -    ZERO                 
+        bin count_out_bins_up[10]                           0          1          -    ZERO                 
+        bin count_out_bins_up[11]                           0          1          -    ZERO                 
+        bin count_out_bins_up[12]                           0          1          -    ZERO                 
+        bin count_out_bins_up[13]                           0          1          -    ZERO                 
+        bin count_out_bins_up[14]                           0          1          -    ZERO                 
+        bin count_out_bins_up[15]                           0          1          -    ZERO                 
+    Coverpoint cp3                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin overflow_bin                                    0          1          -    ZERO                 
+    Coverpoint cp4                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0         16          -                      
+        missing/total bins:                                16         16          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin count_out_bins_down[0]                          0          1          -    ZERO                 
+        bin count_out_bins_down[1]                          0          1          -    ZERO                 
+        bin count_out_bins_down[2]                          0          1          -    ZERO                 
+        bin count_out_bins_down[3]                          0          1          -    ZERO                 
+        bin count_out_bins_down[4]                          0          1          -    ZERO                 
+        bin count_out_bins_down[5]                          0          1          -    ZERO                 
+        bin count_out_bins_down[6]                          0          1          -    ZERO                 
+        bin count_out_bins_down[7]                          0          1          -    ZERO                 
+        bin count_out_bins_down[8]                          0          1          -    ZERO                 
+        bin count_out_bins_down[9]                          0          1          -    ZERO                 
+        bin count_out_bins_down[10]                         0          1          -    ZERO                 
+        bin count_out_bins_down[11]                         0          1          -    ZERO                 
+        bin count_out_bins_down[12]                         0          1          -    ZERO                 
+        bin count_out_bins_down[13]                         0          1          -    ZERO                 
+        bin count_out_bins_down[14]                         0          1          -    ZERO                 
+        bin count_out_bins_down[15]                         0          1          -    ZERO                 
+    Coverpoint cp5                                      0.00%        100          -    ZERO                 
+        covered/total bins:                                 0          1          -                      
+        missing/total bins:                                 1          1          -                      
+        % Hit:                                          0.00%        100          -                      
+        bin underflow_bin                                   0          1          -    ZERO                 
+
+TOTAL COVERGROUP COVERAGE: 0.00%  COVERGROUP TYPES: 1
+
+Total Coverage By Instance (filtered view): 0.00%
+

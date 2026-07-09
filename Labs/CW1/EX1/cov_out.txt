@@ -1,0 +1,239 @@
+Coverage Report by instance with details
+
+=================================================================================
+=== Instance: /adder_tb/ADD0
+=== Design Unit: work.adder
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         2         2         0   100.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /adder_tb/ADD0
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File adder.v
+------------------------------------IF Branch------------------------------------
+    11                                        14     Count coming in to IF
+    11              1                          4           if (reset)
+    13              1                         10           else
+Branch totals: 2 hits of 2 branches = 100.00%
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                       3         3         0   100.00%
+
+================================Statement Details================================
+
+Statement Coverage for instance /adder_tb/ADD0 --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File adder.v
+    1                                                module adder (
+    2                                                    input  clk,
+    3                                                    input  reset,
+    4                                                    input  signed [3:0] A,	// Input data A in 2's complement
+    5                                                    input  signed [3:0] B,	// Input data B in 2's complement
+    6                                                    output reg signed [4:0] C // Adder output in 2's complement
+    7                                                		  );
+    8                                                
+    9                                                   // Register output C
+    10              1                         14        always @(posedge clk or posedge reset) begin
+    11                                                     if (reset)
+    12              1                          4     	     C <= 5'b0;
+    13                                                     else
+    14              1                         10     	     C <= A + B;
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                         30        30         0   100.00%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /adder_tb/ADD0 --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                            A[0-3]           1           1      100.00 
+                                            B[0-3]           1           1      100.00 
+                                            C[4-0]           1           1      100.00 
+                                               clk           1           1      100.00 
+                                             reset           1           1      100.00 
+
+Total Node Count     =         15 
+Toggled Node Count   =         15 
+Untoggled Node Count =          0 
+
+Toggle Coverage      =     100.00% (30 of 30 bins)
+
+=================================================================================
+=== Instance: /adder_tb
+=== Design Unit: work.adder_tb
+=================================================================================
+Branch Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Branches                         2         1         1    50.00%
+
+================================Branch Details================================
+
+Branch Coverage for instance /adder_tb
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File adder_tb.sv
+------------------------------------IF Branch------------------------------------
+    29                                        12     Count coming in to IF
+    29              1                    ***0***             if(C_task != C_tb)begin
+    33              1                         12             else
+Branch totals: 1 hit of 2 branches = 50.00%
+
+
+Condition Coverage:
+    Enabled Coverage              Bins   Covered    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Conditions                       1         0         1     0.00%
+
+================================Condition Details================================
+
+Condition Coverage for instance /adder_tb --
+
+  File adder_tb.sv
+----------------Focused Condition View-------------------
+Line       29 Item    1  (C_task != C_tb)
+Condition totals: 0 of 1 input term covered = 0.00%
+
+        Input Term   Covered  Reason for no coverage   Hint
+       -----------  --------  -----------------------  --------------
+  (C_task != C_tb)         N  '_1' not hit             Hit '_1'
+
+     Rows:       Hits  FEC Target            Non-masking condition(s)      
+ ---------  ---------  --------------------  -------------------------     
+  Row   1:          1  (C_task != C_tb)_0    -                             
+  Row   2:    ***0***  (C_task != C_tb)_1    -                             
+
+
+Statement Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Statements                      34        32         2    94.11%
+
+================================Statement Details================================
+
+Statement Coverage for instance /adder_tb --
+
+    Line         Item                      Count     Source 
+    ----         ----                      -----     ------ 
+  File adder_tb.sv
+    1                                                module adder_tb ();
+    2                                                bit clk, reset;
+    3                                                logic signed [3:0] A_tb, B_tb;
+    4                                                logic signed [4:0] C_tb;
+    5                                                
+    6                                                parameter logic signed [3:0] MAXPOS = 7 ;
+    7                                                parameter logic signed [3:0] MAXNEG = -8;
+    8                                                
+    9                                                
+    10                                               initial begin
+    11              1                          1         clk = 0;
+    12              1                          1         forever #1 clk =~clk; 
+    12              2                         25     
+    12              3                         24     
+    13                                               end
+    14                                               
+    15                                               int error_count = 0, correct_count  = 0;
+    16                                               
+    17                                               
+    18                                               adder ADD0(
+    19                                                   .A(A_tb),
+    20                                                   .B(B_tb),
+    21                                                   .C(C_tb),
+    22                                                   .clk(clk),
+    23                                                   .reset(reset)
+    24                                               );
+    25                                               
+    26                                               task check_result (input logic signed [4:0] C_task);
+    27              1                         12         @(negedge clk)
+    28                                                   begin
+    29                                                       if(C_task != C_tb)begin
+    30              1                    ***0***                 $display("Wrong A = %0d| B = %0d| C = %0d| C_expected = %0d",A_tb, B_tb, C_tb, A_tb + B_tb);
+    31              1                    ***0***                 error_count++;
+    32                                                       end
+    33                                                       else
+    34              1                         12                 correct_count++;
+    35                                                   end        
+    36                                               endtask
+    37                                               
+    38                                               task assert_reset();
+    39              1                          2         reset = 1 ;
+    40              1                          2         check_result(0);
+    41              1                          2         reset = 0 ;
+    42                                               endtask
+    43                                               
+    44                                               initial begin
+    45              1                          1         assert_reset();
+    46              1                          1         {A_tb,B_tb} = {4'b0,4'b0}; check_result(0);
+    46              2                          1     
+    47              1                          1         {A_tb,B_tb} = {4'b0,MAXPOS}; check_result(MAXPOS+0);
+    47              2                          1     
+    48              1                          1         {A_tb,B_tb} = {4'b0,MAXNEG}; check_result(0+MAXNEG);
+    48              2                          1     
+    49                                               
+    50                                               
+    51              1                          1         {A_tb,B_tb} = {MAXPOS,4'b0}; check_result(MAXPOS+0);
+    51              2                          1     
+    52              1                          1         {A_tb,B_tb} = {MAXPOS,MAXPOS}; check_result(MAXPOS+MAXPOS);
+    52              2                          1     
+    53              1                          1         {A_tb,B_tb} = {MAXPOS,MAXNEG}; check_result(MAXPOS+MAXNEG);
+    53              2                          1     
+    54                                               
+    55                                               
+    56              1                          1         {A_tb,B_tb} = {MAXNEG,4'b0}; check_result(MAXNEG+0);
+    56              2                          1     
+    57              1                          1         {A_tb,B_tb} = {MAXNEG,MAXPOS}; check_result(MAXNEG+MAXPOS);
+    57              2                          1     
+    58              1                          1         {A_tb,B_tb} = {MAXNEG,MAXNEG}; check_result(MAXNEG+MAXNEG);
+    58              2                          1     
+    59              1                          1         {A_tb,B_tb} = {4'b0, MAXNEG}; check_result(0+MAXNEG);
+    59              2                          1     
+    60              1                          1         assert_reset();
+    61                                               
+    62              1                          1         $stop();
+
+Toggle Coverage:
+    Enabled Coverage              Bins      Hits    Misses  Coverage
+    ----------------              ----      ----    ------  --------
+    Toggles                        158        37       121    23.41%
+
+================================Toggle Details================================
+
+Toggle Coverage for instance /adder_tb --
+
+                                              Node      1H->0L      0L->1H  "Coverage"
+                                              ---------------------------------------
+                                         A_tb[0-3]           1           1      100.00 
+                                         B_tb[0-3]           1           1      100.00 
+                                         C_tb[0-4]           1           1      100.00 
+                                               clk           1           1      100.00 
+                                correct_count[0-2]           1           1      100.00 
+                                  correct_count[3]           0           1       50.00 
+                               correct_count[4-31]           0           0        0.00 
+                                 error_count[0-31]           0           0        0.00 
+                                             reset           1           1      100.00 
+
+Total Node Count     =         79 
+Toggled Node Count   =         18 
+Untoggled Node Count =         61 
+
+Toggle Coverage      =      23.41% (37 of 158 bins)
+
+
+Total Coverage By Instance (filtered view): 51.30%
+
